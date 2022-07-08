@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Contacts</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
@@ -27,7 +30,7 @@
 
   <main class="container">
 
-    <form class="card mt-1 mb-1" id="new-contact-form" class="" onsubmit="addContact(event)">
+    <form class="card mt-1 mb-1 hidden" id="new-contact-form" class="" onsubmit="addContact(event)">
       <div>
         <h4 class="mt-1 mb-1">
           <i class="fa fa-fw fa-user"></i>
@@ -36,7 +39,15 @@
       </div>
       <div>
         <label for="name">Name:</label>
-        <input type="text" name="name">
+        <input id="name-input" type="text" name="name" required>
+      </div>
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Please input numbers only.  10 digits, area code + phone number.">
+      </div>
+      <div>
+        <label for="emergencyContact">Emergency Contact?</label>
+        <input type="checkbox" name="emergencyContact" value="true">
       </div>
 
       <hr>
@@ -47,29 +58,7 @@
       </div>
     </form>
 
-    <div class="contacts" id="contact-list">
-      <!-- TODO Remove these templates and draw them using JavaScript -->
-      <div class="card mt-1 mb-1">
-        <h3 class="mt-1 mb-1">Jimmy Tester</h3>
-        <div class="d-flex space-between">
-          <p>
-            <i class="fa fa-fw fa-phone"></i>
-            <span>(777) 777-7777</span>
-          </p>
-          <i class="action fa fa-trash text-danger"></i>
-        </div>
-      </div>
-      <div class="card mt-1 mb-1 emergency-contact">
-        <h3 class="mt-1 mb-1">Emergency Contact Tester</h3>
-        <div class="d-flex space-between">
-          <p>
-            <i class="fa fa-fw fa-phone"></i>
-            <span>(777) 777-7777</span>
-          </p>
-          <i class="action fa fa-trash text-danger"></i>
-        </div>
-      </div>
-    </div>
+    <div class="contacts" id="contact-list"> </div>
   </main>
 
   <script src="main.js"></script>
